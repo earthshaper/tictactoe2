@@ -1,7 +1,7 @@
 @use('App\Icons\Ios')
 @use('App\Icons\Android')
 
-<native:top-bar title="Tic Tac Toe" font="display">
+<native:top-bar title="Trick Tac Toe" font="display">
     <native:top-bar-action id="reset" label="Reset scores" @tap="resetScores"
                            :ios-icon="Ios::ArrowCounterclockwise" :android-icon="Android::RestartAlt" />
 </native:top-bar>
@@ -11,6 +11,11 @@
 
         <native:button-group :options="['vs ' . \App\NativeComponents\TicTacToe::CPU_NAME, '2 Players']" native:model="mode"
                              a11y-label="Game mode" />
+
+        <native:row class="w-full items-center justify-center gap-2">
+            <native:icon :ios="Ios::MoonStarsFill" :android="Android::NightsStay" :size="20" class="text-theme-draw" />
+            <native:text class="text-sm text-theme-on-surface-variant text-center">Happy Halloween! Pumpkins vs. slime.</native:text>
+        </native:row>
 
         {{-- Scoreboard --}}
         <native:row class="w-full gap-3">
@@ -75,9 +80,9 @@
 
         <native:text class="text-sm text-theme-on-surface-variant text-center">
             @if ($this->vsCpu())
-                You're X. {{ \App\NativeComponents\TicTacToe::CPU_NAME }} is O. Take turns starting each round.
+                You're the pumpkin X. {{ \App\NativeComponents\TicTacToe::CPU_NAME }} the ghost is the slimy O. Take turns starting each round.
             @else
-                Pass the phone! Take turns starting each round.
+                Pass the cursed phone! Take turns starting each round.
             @endif
         </native:text>
     </native:column>

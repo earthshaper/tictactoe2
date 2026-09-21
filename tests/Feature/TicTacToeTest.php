@@ -10,8 +10,8 @@ function marks(array $cells, string $mark): int
 
 it('renders an empty board and scoreboard', function () {
     Native::test(TicTacToe::class)
-        ->assertSee('Tic Tac Toe')
-        ->assertSee('Bleep')
+        ->assertSee('Trick Tac Toe')
+        ->assertSee('Boo')
         ->assertSee('Restart round')
         ->assertSet('cells', array_fill(0, 9, null))
         ->assertSet('turn', 'X');
@@ -52,7 +52,7 @@ it('scores a win in two-player mode and highlights the line', function () {
 
     $test->assertSet('winner', 'X')
         ->assertSet('winLine', [0, 1, 2])
-        ->assertSee('Player X wins!')
+        ->assertSee('Player X wins! Happy Halloween!')
         ->assertSee('Play again');
 
     expect($test->get('scores'))->toBe(['X' => 1, 'O' => 0, 'draw' => 0]);

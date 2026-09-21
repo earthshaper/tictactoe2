@@ -15,7 +15,7 @@ class TicTacToe extends NativeComponent
 
     public const MODE_FRIEND = 1;
 
-    public const CPU_NAME = 'Bleep';
+    public const CPU_NAME = 'Boo';
 
     /** @var array<int, string|null> */
     public array $cells = [];
@@ -90,11 +90,11 @@ class TicTacToe extends NativeComponent
         $this->turn = $this->starter;
 
         if ($this->vsCpu() && $this->turn === 'O') {
-            $this->message = Arr::random(['My turn first. Beep boop.', 'Bleep goes first!', 'Watch and learn...']);
+            $this->message = Arr::random(['Boo haunts first!', 'The ghost goes first...', 'Ooooh, my turn first!']);
             $this->queueCpuMove();
         } else {
             $this->message = $this->vsCpu()
-                ? Arr::random(['Your move!', 'You go first. Pick a square!', 'Ready when you are.'])
+                ? Arr::random(['Your move... if you dare!', 'You go first. Pick a grave!', 'Ready when you are, mortal.'])
                 : "{$this->turn} goes first!";
         }
     }
@@ -171,7 +171,7 @@ class TicTacToe extends NativeComponent
         if (Board::isFull($this->cells)) {
             $this->draw = true;
             $this->scores['draw']++;
-            $this->message = Arr::random(["It's a draw!", 'Stalemate! Nobody wins.', 'A tie! Great minds...']);
+            $this->message = Arr::random(["It's a draw! Spooky...", 'Nobody wins. Eerie.', 'A tie! The spirits are confused.']);
 
             return;
         }
@@ -187,19 +187,19 @@ class TicTacToe extends NativeComponent
         }
 
         return $this->turn === 'X'
-            ? Arr::random(['Your turn!', 'Hmm, your move.', 'Top that!', 'Go on then...', 'Your move, human.'])
-            : Arr::random(['Bleep is thinking...', 'Calculating...', 'Hmm, let me see...', 'Processing...']);
+            ? Arr::random(['Your turn, mortal.', 'Boo is watching you...', 'Top that!', 'Go on... if you dare.', 'Your move, pumpkin.'])
+            : Arr::random(['Boo is scheming...', 'Brewing a plan...', 'Stirring the cauldron...', 'Consulting the spirits...']);
     }
 
     private function winMessage(string $mark): string
     {
         if (! $this->vsCpu()) {
-            return "Player {$mark} wins!";
+            return "Player {$mark} wins! Happy Halloween!";
         }
 
         return $mark === 'X'
-            ? Arr::random(['You win! Nicely done!', 'Victory! Bleep is sad now.', 'You beat the robot!', 'Winner winner!'])
-            : Arr::random(['Bleep wins! Beep boop!', 'Robots rule! Try again?', 'Gotcha! Bleep wins.']);
+            ? Arr::random(['You win! Boo is spooked!', 'Victory! The ghost is gone!', 'You busted the ghost!', 'Treat! You win!'])
+            : Arr::random(['Boo wins! Mwahaha!', 'Trick! Boo wins.', 'Gotcha! Boo haunts on.']);
     }
 
     private function buzz(): void
